@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.5'
-
+gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'pg', '~> 0.15'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'haml-rails', '~> 0.9.0'
@@ -15,12 +15,12 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
-
+ gem 'byebug'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 group :development, :test do
-   gem 'byebug'
+  
 end
 
 group :development do

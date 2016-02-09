@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+
+    resources :sessions, only: [:create, :destroy]
+    
+    
+ 
  root 'products#index'
  
  resources :products do
