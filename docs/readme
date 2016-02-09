@@ -1,0 +1,41 @@
+
+
+sudo apt-get install imagemagick
+
+rails s -b $IP -p $PORT
+
+postgresql setup
+
+Create a new username and password for postgresql on cloud9:
+
+ sudo service postgresql start
+sudo sudo -u postgres psql
+CREATE USER revjatto SUPERUSER PASSWORD 'c6h120h';
+
+Create ENV variables on cloud9:
+
+echo "export USERNAME=username" >> ~/.profile
+echo "export PASSWORD=password" >> ~/.profile
+source ~/.profile
+
+
+then quit
+postgres=# \q
+
+create your database:
+
+rake db:create
+My database.yml for rails 4.2.0 on cloud9:
+
+default: &default
+  adapter: postgresql
+  encoding: SQL_ASCII
+  username: revjatto
+  password: c6h120h
+  
+  pool: 5
+  host: <%= ENV['IP'] %>
+
+https://www.youtube.com/watch?v=q-rn7-ds98Q part1
+
+https://www.youtube.com/watch?v=F8_mXlDtYSI#t=75.006826 (part2)

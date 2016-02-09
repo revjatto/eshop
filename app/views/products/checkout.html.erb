@@ -1,0 +1,27 @@
+<h2>Checkout: <%= @product.name %></h2>
+<table class="table">
+    <thead>
+    <tr>
+    <th class="danger">Product</th>
+    <th class="danger">Price</th> 
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @product.name %></td>
+    <td><%= number_to_currency @product.price %></td> 
+   
+  </tr>
+  </tbody>
+  <thead>
+  <tr>
+  <th class="right">Total</th>
+  </tr>
+  </thead>
+  <tr>
+      <body>
+   <td class="right"><strong><%= number_to_currency @product.price %></strong></td>  
+   </tr>
+   </body>
+</table>
+<%= link_to 'Checkout', buy_product_path(@product), method: :patch, class: 'btn btn-primary btn-md' %>

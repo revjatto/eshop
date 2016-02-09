@@ -1,0 +1,25 @@
+<h1>Products</h1> 
+
+<% if @products.present? %>
+
+ 
+  <% @products.each do |product| %>
+  <ul>
+   <li><%= link_to product.name, product_path(product) %></li>
+   &mdash;
+   <% if product.stock.zero? %>
+   Out of Stock
+   
+   <% else %>
+   
+   <%= link_to 'Buy', checkout_product_path(product)  %>
+   <% end %>
+   </ul>
+   <% end %>
+   
+<% else %> 
+ <p>No products.</p>
+   <% end %>
+ 
+ <%= link_to "New Product", new_product_path, class: "btn btn-primary" %>
+
