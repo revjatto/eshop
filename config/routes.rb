@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  resources :users, except: [:index, :destroy]
+ 
+ resources :sessions, only: [:create, :destroy]
+     
+     
+  resources :users, except: [:index, :destroy] do
+ 
+ member do
+  
+  get :history
+ end
+end
 
-    resources :sessions, only: [:create, :destroy]
-    
-    
- 
- root 'products#index'
- 
  resources :products do
   
    member do
@@ -15,4 +19,6 @@ Rails.application.routes.draw do
     patch :buy
  end
  end
+ 
+  root 'products#index'
 end

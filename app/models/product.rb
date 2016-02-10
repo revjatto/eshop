@@ -1,8 +1,16 @@
 class Product < ActiveRecord::Base
-    
-def buy
+   
+def available?
+ self.stock > 0
+end
+
+
+def buy_by(user)
+     if available?
+     user.products << self
      self.stock -= 1
      #Add product to user's history
-     self.save
+     save
+     end
 end
 end

@@ -1,0 +1,6 @@
+<% if flash.present? %>
+<% flash.each do |type, message| %>
+<strong><%= type.titleize %></strong>
+
+<% end %>
+<% end %>

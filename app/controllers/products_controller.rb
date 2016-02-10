@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:checkout, :buy]
   
   def index
     @products = Product.all.order('created_at DESC')
@@ -53,9 +53,9 @@ class ProductsController < ApplicationController
   def buy
    @product = Product.find(params[:id])
    
-  @product.buy
+  @product.buy_by(current_user)
      
-     redirect_to @product
+     redirect_to @product, notice: "You purchase #{@product.name}" 
   
   end
   

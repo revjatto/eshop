@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
          #validates :email, format: {with: /\A\z/}
          validates :password, presence: true
          
+         #relationship
+         
+         has_many :purchases, dependent: :destroy
+         has_many :products, through: :purchases
+         
          
          before_save :encrypt_password, if: -> { self.password.present? }
          
@@ -25,10 +30,10 @@ class User < ActiveRecord::Base
       end
     end
   def valid_password(password)
-    self.encrpted_password == Digest::MDS.hexdigest(password)
+    self.encrpted_password == Digest::MD5.hexdigest(password)
   end
   
   def encrypt_password
-   # self.encrypted_password == Digest::MDS.hexdigest(password)
+    self.encrypted_password == Digest::MD5.hexdigest(password)
   end
 end
